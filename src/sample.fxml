@@ -1,30 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
-<BorderPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
+<BorderPane prefHeight="596.0" prefWidth="453.0" xmlns="http://javafx.com/javafx/8.0.171"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
     <center>
         <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-                    prefHeight="571.0" prefWidth="789.0">
+                    prefHeight="571.0" prefWidth="740.0">
             <children>
                 <Button fx:id="image_btn1" layoutX="14.0" layoutY="515.0" mnemonicParsing="false"
-                        onAction="#choose_image1" prefHeight="42.0" prefWidth="116.0" text="Choose Image 1"/>
-                <ImageView fx:id="imageView" fitHeight="448.0" fitWidth="752.0" layoutX="19.0" layoutY="62.0"
+                        onAction="#choose_image1" prefHeight="42.0" prefWidth="102.0" text="Choose Image 1"/>
+                <ImageView fx:id="imageView" fitHeight="278.0" fitWidth="343.0" layoutX="194.0" layoutY="104.0"
                            pickOnBounds="true" preserveRatio="true"/>
-                <Button layoutX="262.0" layoutY="515.0" mnemonicParsing="false" onAction="#start" prefHeight="42.0"
-                        prefWidth="116.0" text="Start">
+                <Button layoutX="280.0" layoutY="515.0" mnemonicParsing="false" onAction="#start" prefHeight="42.0"
+                        prefWidth="85.0" text="Start">
                     <font>
                         <Font size="13.0"/>
                     </font>
                 </Button>
-                <Button fx:id="image_btn2" layoutX="659.0" layoutY="515.0" mnemonicParsing="false"
-                        onAction="#choose_image2" prefHeight="42.0" prefWidth="116.0" text="Choose Image 2"/>
-                <Button layoutX="406.0" layoutY="515.0" mnemonicParsing="false" onAction="#restore" prefHeight="42.0"
-                        prefWidth="116.0" text="Restore">
+                <Button fx:id="image_btn2" layoutX="624.0" layoutY="515.0" mnemonicParsing="false"
+                        onAction="#choose_image2" prefHeight="42.0" prefWidth="102.0" text="Choose Image 2"/>
+                <Button layoutX="402.0" layoutY="515.0" mnemonicParsing="false" onAction="#restore" prefHeight="42.0"
+                        prefWidth="85.0" text="Restore">
                     <font>
                         <Font size="13.0"/>
                     </font>

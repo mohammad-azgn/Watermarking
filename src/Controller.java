@@ -1,7 +1,6 @@
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
@@ -25,12 +24,6 @@ public class Controller {
 
     private Mat largeImageMat;
     private Mat smallImageMat;
-
-    @FXML
-    private Button image_btn1;
-
-    @FXML
-    private Button image_btn2;
 
     @FXML
     private ImageView imageView;
@@ -65,6 +58,7 @@ public class Controller {
         }
     }
 
+
     @FXML
     void start(ActionEvent event) {
         int index = 0;
@@ -86,6 +80,88 @@ public class Controller {
         Image image = matToImage(largeImageMat);
         imageView.setImage(image);
     }
+
+    @FXML
+    void restore(ActionEvent event) {
+
+        smallImageMat = new Mat(350, 350, CvType.CV_8UC3);
+
+        byte counter = 0;
+        byte rCount = 0, gCount = 0, bCount = 0;
+        int row = 0, column = 0;
+        boolean flagToBreak = false;
+
+        for (int i = 0; i < largeImageMat.size().width; i++) {
+            for (int j = 0; j < largeImageMat.size().height; j++) {
+                double[] largePhotoIndex = largeImageMat.get(i, j);
+
+                int r = (int) largePhotoIndex[0];
+                int g = (int) largePhotoIndex[1];
+                int b = (int) largePhotoIndex[2];
+
+                rCount += Math.pow(2, counter) * lsb(r);
+                gCount += Math.pow(2, counter) * lsb(g);
+                bCount += Math.pow(2, counter) * lsb(b);
+
+                counter++;
+
+                if (counter == 8) {
+                    smallImageMat.put(row, column, new byte[]{rCount, gCount, bCount});
+
+                    rCount = gCount = bCount = counter = 0; // Reset All
+
+                    column++;
+                    if (column > 349) {
+                        row++;
+                        column = 0;
+                    }
+
+                    if (row > 349) {
+                        flagToBreak = true;
+                        break;
+                    }
+                }
+            }
+            if (flagToBreak) break;
+        }
+
+
+        System.out.println("Finished Restore");
+
+        Image image = matToImage(smallImageMat);
+        imageView.setImage(image);
+    }
+
+
+//....................................................................Menu Button
+    @FXML
+    void New(ActionEvent event) {
+        imageView.setImage(null);
+    }
+
+    @FXML
+    void save(ActionEvent event) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("PNG File", "*.png"));
+
+        File file = fileChooser.showSaveDialog(null);
+
+        BufferedImage bufferedImage = matToBufferImage(largeImageMat);
+
+        try {
+            ImageIO.write(bufferedImage, "png", file);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    void about(ActionEvent event) {
+        Main.Alert_Box("INFORMATION", "About", "azargoonm@gmail.com",
+                "@Mohammad_azgn \n\n RGB -> RGB \n Gray -> Binary").show();
+    }
+//....................................................................
+
 
     private void hintSecretPhoto(int row, int column, double[] smallPhotoIndex) {
         String[] binaryColor = binaryOfColor(smallPhotoIndex);
@@ -163,75 +239,6 @@ public class Controller {
     private int[] getLargePhotoIndex(int index) {
         int newIndex = index * 8;
         return new int[]{newIndex / 1000, newIndex % 1000};
-    }
-
-
-    @FXML
-    void save(ActionEvent event) {
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("PNG File", "*.png"));
-
-        File file = fileChooser.showSaveDialog(null);
-
-        BufferedImage bufferedImage = matToBufferImage(largeImageMat);
-
-        try {
-            ImageIO.write(bufferedImage, "png", file);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @FXML
-    void restore(ActionEvent event) {
-
-        smallImageMat = new Mat(350, 350, CvType.CV_8UC3);
-
-        byte counter = 0;
-        byte rCount = 0, gCount = 0, bCount = 0;
-        int row = 0, column = 0;
-        boolean flagToBreak = false;
-
-        for (int i = 0; i < largeImageMat.size().width; i++) {
-            for (int j = 0; j < largeImageMat.size().height; j++) {
-                double[] largePhotoIndex = largeImageMat.get(i, j);
-
-                int r = (int) largePhotoIndex[0];
-                int g = (int) largePhotoIndex[1];
-                int b = (int) largePhotoIndex[2];
-
-                rCount += Math.pow(2, counter) * lsb(r);
-                gCount += Math.pow(2, counter) * lsb(g);
-                bCount += Math.pow(2, counter) * lsb(b);
-
-                counter++;
-
-                if (counter == 8) {
-                    smallImageMat.put(row, column, new byte[]{rCount, gCount, bCount});
-
-                    rCount = gCount = bCount = counter = 0; // Reset All
-
-                    column++;
-                    if (column > 349) {
-                        row++;
-                        column = 0;
-                    }
-
-                    if (row > 349) {
-                        flagToBreak = true;
-                        break;
-                    }
-                }
-
-            }
-            if (flagToBreak) break;
-        }
-
-
-        System.out.println("Finished Restore");
-
-        Image image = matToImage(smallImageMat);
-        imageView.setImage(image);
     }
 
     private int lsb(int d) {

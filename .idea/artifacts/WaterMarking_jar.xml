@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="WaterMarking:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/WaterMarking_jar</output-path>
+    <root id="archive" name="WaterMarking.jar">
+      <element id="module-output" name="WaterMarking" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/libs/opencv/java/opencv-410.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

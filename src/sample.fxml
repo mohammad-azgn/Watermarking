@@ -5,45 +5,41 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
-<BorderPane prefHeight="596.0" prefWidth="453.0" xmlns="http://javafx.com/javafx/8.0.171"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
+<BorderPane prefHeight="529.0" prefWidth="740.0" style="-fx-background-color: #64646b;"
+            xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
     <center>
         <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-                    prefHeight="571.0" prefWidth="740.0">
-            <children>
-                <Button fx:id="image_btn1" layoutX="14.0" layoutY="515.0" mnemonicParsing="false"
-                        onAction="#choose_image1" prefHeight="42.0" prefWidth="102.0" text="Choose Image 1"/>
-                <ImageView fx:id="imageView" fitHeight="278.0" fitWidth="343.0" layoutX="194.0" layoutY="104.0"
-                           pickOnBounds="true" preserveRatio="true"/>
-                <Button layoutX="280.0" layoutY="515.0" mnemonicParsing="false" onAction="#start" prefHeight="42.0"
-                        prefWidth="85.0" text="Start">
-                    <font>
-                        <Font size="13.0"/>
-                    </font>
-                </Button>
-                <Button fx:id="image_btn2" layoutX="624.0" layoutY="515.0" mnemonicParsing="false"
-                        onAction="#choose_image2" prefHeight="42.0" prefWidth="102.0" text="Choose Image 2"/>
-                <Button layoutX="402.0" layoutY="515.0" mnemonicParsing="false" onAction="#restore" prefHeight="42.0"
-                        prefWidth="85.0" text="Restore">
-                    <font>
-                        <Font size="13.0"/>
-                    </font>
-                </Button>
+                    prefHeight="542.0" prefWidth="740.0">
+            <Button layoutX="14.0" layoutY="487.0" mnemonicParsing="false" onAction="#choose_image1" prefHeight="42.0"
+                    prefWidth="80.0" text="Image 1"/>
+            <ImageView fx:id="imageView" fitHeight="278.0" fitWidth="343.0" layoutX="194.0" layoutY="104.0"
+                       pickOnBounds="true" preserveRatio="true"/>
+            <Button layoutX="285.0" layoutY="491.0" mnemonicParsing="false" onAction="#start" prefHeight="35.0"
+                    prefWidth="85.0" text="Start">
+                <font>
+                    <Font size="13.0"/>
+                </font>
+            </Button>
+            <Button layoutX="646.0" layoutY="487.0" mnemonicParsing="false" onAction="#choose_image2" prefHeight="42.0"
+                    prefWidth="80.0" text="Image 2"/>
+            <Button layoutX="398.0" layoutY="491.0" mnemonicParsing="false" onAction="#restore" prefHeight="35.0"
+                    prefWidth="85.0" text="Restore">
+                <font>
+                    <Font size="13.0"/>
+                </font>
+            </Button>
 
-            </children>
         </AnchorPane>
     </center>
     <top>
-        <MenuBar BorderPane.alignment="CENTER">
-            <menus>
-                <Menu mnemonicParsing="false" text="File">
-                    <items>
-                        <MenuItem mnemonicParsing="false" text="Start"/>
-                        <MenuItem mnemonicParsing="false" text="Restore"/>
-                        <MenuItem mnemonicParsing="false" onAction="#save" text="Save"/>
-                    </items>
-                </Menu>
-            </menus>
+        <MenuBar prefWidth="740.0" BorderPane.alignment="CENTER">
+            <Menu mnemonicParsing="false" text="File">
+                <MenuItem mnemonicParsing="false" onAction="#New" text="New"/>
+                <MenuItem mnemonicParsing="false" onAction="#save" text="Save"/>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Help">
+                <MenuItem mnemonicParsing="false" onAction="#about" text="About"/>
+            </Menu>
         </MenuBar>
     </top>
 </BorderPane>

@@ -133,7 +133,7 @@ public class Controller {
     }
 
 
-//....................................................................Menu Button
+    //...........................................Menu Button
     @FXML
     void New(ActionEvent event) {
         imageView.setImage(null);
@@ -143,10 +143,13 @@ public class Controller {
     void save(ActionEvent event) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("PNG File", "*.png"));
-
         File file = fileChooser.showSaveDialog(null);
 
-        BufferedImage bufferedImage = matToBufferImage(largeImageMat);
+        BufferedImage bufferedImage;
+        if (imageView.getImage().getHeight() == 350.0) {
+            bufferedImage = matToBufferImage(smallImageMat);
+        } else
+            bufferedImage = matToBufferImage(largeImageMat);
 
         try {
             ImageIO.write(bufferedImage, "png", file);
@@ -160,7 +163,7 @@ public class Controller {
         Main.Alert_Box("INFORMATION", "About", "azargoonm@gmail.com",
                 "@Mohammad_azgn \n\n RGB -> RGB \n Gray -> Binary").show();
     }
-//....................................................................
+//...................................................
 
 
     private void hintSecretPhoto(int row, int column, double[] smallPhotoIndex) {

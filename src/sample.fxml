@@ -11,28 +11,30 @@
         <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
                     prefHeight="542.0" prefWidth="740.0">
             <Button layoutX="14.0" layoutY="487.0" mnemonicParsing="false" onAction="#choose_image1" prefHeight="42.0"
-                    prefWidth="80.0" text="Image 1"/>
-            <ImageView fx:id="imageView" fitHeight="278.0" fitWidth="343.0" layoutX="194.0" layoutY="104.0"
+                    prefWidth="103.0" text="انتخاب عکس اول"/>
+            <ImageView fx:id="imageView" fitHeight="400.0" fitWidth="400.0" layoutX="170.0" layoutY="47.0"
                        pickOnBounds="true" preserveRatio="true"/>
-            <Button layoutX="285.0" layoutY="491.0" mnemonicParsing="false" onAction="#start" prefHeight="35.0"
-                    prefWidth="85.0" text="Start">
+            <Button layoutX="524.0" layoutY="491.0" mnemonicParsing="false" onAction="#start" prefHeight="35.0"
+                    prefWidth="92.0" text="مخفی کردن" textAlignment="CENTER">
                 <font>
                     <Font size="13.0"/>
                 </font>
             </Button>
-            <Button layoutX="646.0" layoutY="487.0" mnemonicParsing="false" onAction="#choose_image2" prefHeight="42.0"
-                    prefWidth="80.0" text="Image 2"/>
-            <Button layoutX="398.0" layoutY="491.0" mnemonicParsing="false" onAction="#restore" prefHeight="35.0"
-                    prefWidth="85.0" text="Restore">
+            <Button layoutX="133.0" layoutY="487.0" mnemonicParsing="false" onAction="#choose_image2" prefHeight="42.0"
+                    prefWidth="102.0" text="انتخاب عکس دوم" textAlignment="RIGHT"/>
+            <Button layoutX="629.0" layoutY="491.0" mnemonicParsing="false" onAction="#restore" prefHeight="35.0"
+                    prefWidth="92.0" text="بازیابی کردن">
                 <font>
                     <Font size="13.0"/>
                 </font>
             </Button>
+            <Button layoutX="315.0" layoutY="490.0" mnemonicParsing="false" onAction="#save" prefHeight="37.0"
+                    prefWidth="106.0" text="ذخیره کردن تصویر" textAlignment="CENTER"/>
 
         </AnchorPane>
     </center>
     <top>
-        <MenuBar prefWidth="740.0" BorderPane.alignment="CENTER">
+        <MenuBar prefWidth="740.0" style="-fx-background-color: #a8a8a8;" BorderPane.alignment="CENTER">
             <Menu mnemonicParsing="false" text="File">
                 <MenuItem mnemonicParsing="false" onAction="#New" text="New"/>
                 <MenuItem mnemonicParsing="false" onAction="#save" text="Save"/>
